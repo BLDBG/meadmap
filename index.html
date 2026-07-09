@@ -78,12 +78,44 @@
           container: null
         });
         
+        // Define the popup template for the mead producing facility layer
+        const facilityPopupTemplate = {
+          title: "{facility_name}",
+          content: [
+            {
+              type: "fields",
+              fieldInfos: [
+                {
+                  fieldName: "primary_website",
+                  label: "Website"
+                },
+                {
+                  fieldName: "is_mead_produced_here",
+                  label: "Is mead produced here?"
+                },
+                {
+                  fieldName: "is_mead_available_for_purchase",
+                  label: "Is mead available for purchase?"
+                },
+                {
+                  fieldName: "notable_information",
+                  label: "Notable Information"
+                }
+              ]
+            }
+          ]
+        };
+
+
         // Create featurelayer from feature service 
         const layer = new FeatureLayer({ 
           // URL to the service 
           url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815_results/FeatureServer" 
         });
 
+        // Set the popup template for the mead producing facility layer
+        outFields: ["facility_name","primary_website","is_mead_produced_here","is_mead_available_for_purchase","notable_information"],
+        popupTemplate: facilityPopupTemplate
 
         // Add the expand widget to the view instead of the search widget
         view.ui.add(searchWidget, {
