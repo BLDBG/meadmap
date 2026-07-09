@@ -51,10 +51,9 @@
         "esri/views/MapView",
         "esri/layers/FeatureLayer",
         "esri/widgets/Editor",
-        "esri/widgets/Expand",
         "esri/widgets/Locate",
         "esri/widgets/Search"], 
-        (esriConfig, Map, MapView, FeatureLayer, Editor, Expand, Locate, Search) => {
+        (esriConfig, Map, MapView, FeatureLayer, Editor, Locate, Search) => {
         
         // set the API key - new commented out for testing
          esriConfig.apiKey = "AAPTanQncLZrZf5ur6pM-ljzNxg..i-VpfICarg1tjz10faxck-Zge3EjZ7zUUP6cbX081l71ELCp9bpgqiXurYSbhs0fDmOXMQXAyGeiHz6r66t7EHfdRLO-CHh0jjakX3bxMaWeDs_FW1ECWOu3cH9p_uFnmikXqwfxpBtMbKtKduCMoKi4NsJLd979B2jQuh6qA8C7XL6pc-Zsj47-Mbr-jDGLgR_QEzkw_Qgpi8Q4oJ-Tc-g8-3Y2Q9sE_mfixuiuCYkRfvXy_LtaeqpybeLD6TZomJ_jjRIL7QE.AT1_ZP956a50";
@@ -94,15 +93,8 @@
           ]
         });
 
-        // Add the editor widget in an expand widget to the bottom left corner of the view
-        const editorExpand = new Expand({
-          view: view,
-          content: Editor,
-          expandIcon: "pencil",
-          expanded: false
-        });
 
-        view.ui.add(editorExpand, {
+        view.ui.add(Editor, {
           position: "bottom-left"
         });
 
