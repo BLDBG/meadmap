@@ -162,17 +162,17 @@
         map.add(facilityLayer);
 
         // Create featurelayer from feature service 
-        const layer = new FeatureLayer({ 
-          // URL to the service 
-          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815/FeatureServer", 
-          renderer: facilityRenderer
-        });
+       // const layer = new FeatureLayer({ 
+       //   // URL to the service 
+       //   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815/FeatureServer", 
+       //   renderer: facilityRenderer
+       // });
 
-        // Add the feature layer to the map
-        map.add(layer);
+       // // Add the feature layer to the map
+       // map.add(layer);
 
         const facilityInfos = {
-          layer: layer
+          layer: facilityLayer
         }
 
         const editor = new Editor({
