@@ -158,33 +158,6 @@
 
         const editor = new Editor({
           view: view,
-          layerInfos: [
-            {
-              layer: layer,
-              fieldConfig: [
-                {
-                  name: "facility_name",
-                  label: "Facility Name"
-                },
-                {
-                  name: "primary_website",
-                  label: "Primary Website"
-                },
-                {
-                  name: "is_mead_produced_here",
-                  label: "Is Mead Produced Here?"
-                },
-                {
-                  name: "is_mead_available_for_purchase",
-                  label: "Is Mead Available for Purchase?"
-                },
-                {
-                  name: "notable_information",
-                  label: "Notable Information"
-                }
-              ]
-            }
-          ]
         });
 
         view.ui.add(editor, "bottom-left");
