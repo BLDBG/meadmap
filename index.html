@@ -111,19 +111,33 @@
         };
 
         // Define a customer renderer for the mead producing facility layer
-        const facilityRenderer = {
-          type: "simple",
-          symbol: {
-            type: "simple-marker",
-            color: [235, 188, 78], // Honey color
-            size: 12,
-            outline: {
-              color: [0, 0, 0], // Black outline
-              width: 1
-            }
-          }
-        };
+        //const facilityRenderer = {
+        //  type: "simple",
+        //  symbol: {
+        //    type: "simple-marker",
+        //    color: [235, 188, 78], // Honey color
+        //    size: 12,
+        //    outline: {
+        //      color: [0, 0, 0], // Black outline
+        //      width: 1
+        //    }
+        //  }
+        //};
 
+        // Define a customer renderer for the mead producing facility layer
+        const facilityRenderer = {
+            type: "simple",
+            symbol: {
+              type: "picture-marker",
+              url: "https://BLDBG.github.io/meadmap/hive_24dp_honey.png",
+              width: 24,
+              height: 24,
+              outline: {
+                color: [0, 0, 0],
+                width: 1
+    }
+  }
+};
 
         // Create featurelayer from feature service 
         const layer = new FeatureLayer({ 
