@@ -49,12 +49,12 @@
         "esri/config",
         "esri/Map",
         "esri/views/MapView",
+        "esri/layers/FeatureLayer",
         "esri/widgets/Editor",
         "esri/widgets/Expand",
         "esri/widgets/Locate",
-        "esri/widgets/Search",
-        "esri/layers/FeatureLayer"], 
-        (esriConfig, Map, MapView, Editor, Expand, Locate, Search, FeatureLayer) => {
+        "esri/widgets/Search"], 
+        (esriConfig, Map, MapView, FeatureLayer, Editor, Expand, Locate, Search) => {
         
         // set the API key - new commented out for testing
          esriConfig.apiKey = "AAPTanQncLZrZf5ur6pM-ljzNxg..i-VpfICarg1tjz10faxck-Zge3EjZ7zUUP6cbX081l71ELCp9bpgqiXurYSbhs0fDmOXMQXAyGeiHz6r66t7EHfdRLO-CHh0jjakX3bxMaWeDs_FW1ECWOu3cH9p_uFnmikXqwfxpBtMbKtKduCMoKi4NsJLd979B2jQuh6qA8C7XL6pc-Zsj47-Mbr-jDGLgR_QEzkw_Qgpi8Q4oJ-Tc-g8-3Y2Q9sE_mfixuiuCYkRfvXy_LtaeqpybeLD6TZomJ_jjRIL7QE.AT1_ZP956a50";
@@ -68,6 +68,17 @@
           map: map, // References the map object
           center: [-89.3846, 43.0747], // Longitude, latitude format
           zoom: 7, // Zoom scale level
+        });
+
+        // Create featurelayer from Survey123 data 
+        const layer = new FeatureLayer({ 
+          // URL to the service 
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815_results/FeatureServer", 
+          renderer: facilityRenderer,
+         // Set the popup template for the mead producing facility layer
+          outFields: ["*"],
+          popupTemplate: facilityPopupTemplate        
+        
         });
 
         const Editor = new Editor({
@@ -142,7 +153,7 @@
           ]
         };
 
-        // Define a customer renderer for the mead producing facility layer
+        // Define a custom colorrenderer for the mead producing facility layer
         //const facilityRenderer = {
         //  type: "simple",
         //  symbol: {
@@ -156,7 +167,7 @@
         //  }
         //};
 
-        // Define a customer renderer for the mead producing facility layer
+        // Define a custom renderer for the mead producing facility layer
         const facilityRenderer = {
             type: "simple",
             symbol: {
@@ -170,19 +181,6 @@
     }
   }
 };
-
-        // Create featurelayer from feature service 
-        const layer = new FeatureLayer({ 
-          // URL to the service 
-          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815_results/FeatureServer", 
-          renderer: facilityRenderer,
-         // Set the popup template for the mead producing facility layer
-          outFields: ["*"],
-          popupTemplate: facilityPopupTemplate        
-        
-        });
-
-
 
         // Add the expand widget to the view instead of the search widget
         view.ui.add(searchWidget, {
