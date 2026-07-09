@@ -78,7 +78,37 @@
           container: null
         });
         
-
+        // Define the popup template for the mead producing facility layer
+        const facilityPopupTemplate = {
+          title: "{facility_name}",
+          content: [
+            {
+              type: "fields",
+              fieldInfos: [
+                {
+                  fieldName: "primary_website",
+                  label: "Website",
+                  visible: true
+                },
+                {
+                  fieldName: "is_mead_produced_here",
+                  label: "Is Mead Produced Here?",
+                  visible: true
+                },
+                {
+                  fieldName: "is_mead_available_for_purchase",
+                  label: "Is Mead Available for Purchase?",
+                  visible: true
+                },
+                {
+                  fieldName: "notable_information",
+                  label: "Notable Information",
+                  visible: true
+                }
+              ]
+            }
+          ]
+        };
 
 
         // Create featurelayer from feature service 
@@ -88,7 +118,7 @@
         
          // Set the popup template for the mead producing facility layer
          // outFields: ["facility_name","primary_website","is_mead_produced_here","is_mead_available_for_purchase","notable_information"],
-         // popupTemplate: facilityPopupTemplate        
+         popupTemplate: facilityPopupTemplate        
         
         });
 
