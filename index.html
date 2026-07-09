@@ -72,14 +72,13 @@
 
         const Editor = new Editor({
           view: view,
-          allowedWorkflows: ["create", "update"],
+          allowedWorkflows: ["create", "update", "delete"],
           layerInfos: [
             {
-              layer: new FeatureLayer({
-                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815_results/FeatureServer"
-              }),
+              layer: layer,
               addEnabled: true,
-              updateEnabled: true
+              updateEnabled: true,
+              deleteEnabled: true
             }
           ]
         });
