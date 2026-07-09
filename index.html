@@ -147,7 +147,7 @@
 };
 
         // Create featurelayer from feature service 
-        const layer = new FeatureLayer({ 
+        const facilityLayer = new FeatureLayer({ 
           // URL to the service 
           url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815_results/FeatureServer", 
           renderer: facilityRenderer,
@@ -158,14 +158,16 @@
         });
 
         // Add the feature layer to the map
-        map.add(layer);
+        map.add(facilityLayer);
 
-      // Create the Editor widget
+        
+
+        // Create the Editor widget
         const editor = new Editor({
           view: view,
           layerInfos: [
             {
-              layer: layer,
+              layer: facilityLayer,
               addEnabled: true,
               updateEnabled: true,
               deleteEnabled: true
@@ -174,11 +176,10 @@
           allowedWorkflows: ["create", "update", "delete"]
         });
 
-      // Put it in an Expand widget (common pattern)
+        // Put it in an Expand widget (common pattern)
         const editorExpand = new Expand({
           view: view,
-          content: editor,
-          expanded: false
+          content: editor
         });
 
         view.ui.add(editorExpand, "bottom-left");
