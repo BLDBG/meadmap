@@ -22,8 +22,8 @@
       .addRecordBtn {
         position: absolute;
         z-index: 10;
-        top: 10px;
-        right: 10px;
+        bottom: 10px;
+        left: 10px;
         background-color: #0079c1;
         color: white;
         padding: 8px 16px;
@@ -37,6 +37,9 @@
       .addRecordBtn:hover {
         background-color: #005a87;
       }
+    
+    
+    
     </style>
 
     <!-- importing the css and libraries for esri.js -->
@@ -51,8 +54,9 @@
         "esri/views/MapView",
         "esri/widgets/Locate",
         "esri/widgets/Search",
-        "esri/layers/FeatureLayer"], 
-        (esriConfig, Map, MapView, Locate, Search, FeatureLayer) => {
+        "esri/layers/FeatureLayer",
+        "esri/widgets/Editor"], 
+        (esriConfig, Map, MapView, Locate, Search, FeatureLayer, Editor) => {
         
         // set the API key - new commented out for testing
          esriConfig.apiKey = "AAPTanQncLZrZf5ur6pM-ljzNxg..i-VpfICarg1tjz10faxck-Zge3EjZ7zUUP6cbX081l71ELCp9bpgqiXurYSbhs0fDmOXMQXAyGeiHz6r66t7EHfdRLO-CHh0jjakX3bxMaWeDs_FW1ECWOu3cH9p_uFnmikXqwfxpBtMbKtKduCMoKi4NsJLd979B2jQuh6qA8C7XL6pc-Zsj47-Mbr-jDGLgR_QEzkw_Qgpi8Q4oJ-Tc-g8-3Y2Q9sE_mfixuiuCYkRfvXy_LtaeqpybeLD6TZomJ_jjRIL7QE.AT1_ZP956a50";
@@ -143,7 +147,6 @@
     }
   }
 };
-
         // Create featurelayer from feature service 
         const facilityLayer = new FeatureLayer({ 
           // URL to the service 
@@ -158,11 +161,26 @@
         // Add the feature layer to the map
         map.add(facilityLayer);
 
+        // Create featurelayer from feature service 
+        const layer = new FeatureLayer({ 
+          // URL to the service 
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815/FeatureServer", 
+          renderer: facilityRenderer
+        });
+
+        // Add the feature layer to the map
+        map.add(layer);
+
         const facilityInfos = {
-          layer: facilityLayer
+          layer: layer
         }
 
+        const editor = new Editor({
+          view: view,
+          layerInfos: [facilityInfos]
+        });
 
+        view.ui.add(editor, "top-right");
 
         // Add the expand widget to the view instead of the search widget
         view.ui.add(searchWidget, {
