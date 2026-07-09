@@ -51,10 +51,8 @@
         "esri/views/MapView",
         "esri/widgets/Locate",
         "esri/widgets/Search",
-        "esri/layers/FeatureLayer",
-        "esri/widgets/Editor",
-        "esri/widgets/Expand"], 
-        (esriConfig, Map, MapView, Locate, Search, FeatureLayer, Editor, Expand) => {
+        "esri/layers/FeatureLayer"], 
+        (esriConfig, Map, MapView, Locate, Search, FeatureLayer) => {
         
         // set the API key - new commented out for testing
          esriConfig.apiKey = "AAPTanQncLZrZf5ur6pM-ljzNxg..i-VpfICarg1tjz10faxck-Zge3EjZ7zUUP6cbX081l71ELCp9bpgqiXurYSbhs0fDmOXMQXAyGeiHz6r66t7EHfdRLO-CHh0jjakX3bxMaWeDs_FW1ECWOu3cH9p_uFnmikXqwfxpBtMbKtKduCMoKi4NsJLd979B2jQuh6qA8C7XL6pc-Zsj47-Mbr-jDGLgR_QEzkw_Qgpi8Q4oJ-Tc-g8-3Y2Q9sE_mfixuiuCYkRfvXy_LtaeqpybeLD6TZomJ_jjRIL7QE.AT1_ZP956a50";
@@ -164,19 +162,6 @@
           layer: facilityLayer
         }
 
-        // Create the Editor widget
-        const editor = new Editor({
-          view: view,
-          layerInfos: [facilityInfos]
-        });
-
-        // Put it in an Expand widget (common pattern)
-        const editorExpand = new Expand({
-          view: view,
-          content: editor
-        });
-
-        view.ui.add(editorExpand, "bottom-left");
 
 
         // Add the expand widget to the view instead of the search widget
@@ -193,7 +178,7 @@
   </head>
   <body>
 
-    <a href="https://survey123.arcgis.com/share/3b11ddf5a31d4bd08c2ef37fbf490815" target="_blank" class="addRecordBtn">Modify Data</a>
+    <a href="https://survey123.arcgis.com/share/3b11ddf5a31d4bd08c2ef37fbf490815" target="_blank" class="addRecordBtn">Add Record</a>
     <div id="viewDiv"></div>
 
   </body>
