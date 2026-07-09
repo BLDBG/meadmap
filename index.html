@@ -67,33 +67,6 @@
           center: [-89.3846, 43.0747], // Longitude, latitude format
           zoom: 7, // Zoom scale level
         });
-
-        // Create featurelayer from Survey123 data 
-        const layer = new FeatureLayer({ 
-          // URL to the service 
-          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815_results/FeatureServer", 
-          renderer: facilityRenderer,
-         // Set the popup template for the mead producing facility layer
-          outFields: ["*"],
-          popupTemplate: facilityPopupTemplate        
-        
-        });
-
-
-        const locateBtn = new Locate({
-          view: view
-        });
-
-        // Add the locate widget to the top left corner of the view
-        view.ui.add(locateBtn, {
-          position: "top-left"
-        });
-
-        const searchWidget = new Search({
-          view: view,
-          placeholder: "Enter address or place...",
-          container: null
-        });
         
         // Define the popup template for the mead producing facility layer
         const facilityPopupTemplate = {
@@ -155,6 +128,34 @@
     }
   }
 };
+
+        // Create featurelayer from Survey123 data 
+        const layer = new FeatureLayer({ 
+          // URL to the service 
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_3b11ddf5a31d4bd08c2ef37fbf490815_results/FeatureServer", 
+          renderer: facilityRenderer,
+         // Set the popup template for the mead producing facility layer
+          outFields: ["*"],
+          popupTemplate: facilityPopupTemplate        
+        
+        });
+
+
+        const locateBtn = new Locate({
+          view: view
+        });
+
+        // Add the locate widget to the top left corner of the view
+        view.ui.add(locateBtn, {
+          position: "top-left"
+        });
+
+        const searchWidget = new Search({
+          view: view,
+          placeholder: "Enter address or place...",
+          container: null
+        });
+        
 
         // Add the expand widget to the view instead of the search widget
         view.ui.add(searchWidget, {
