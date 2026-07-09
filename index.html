@@ -160,20 +160,14 @@
         // Add the feature layer to the map
         map.add(facilityLayer);
 
-        
+        const facilityInfos = {
+          layer: facilityLayer
+        }
 
         // Create the Editor widget
         const editor = new Editor({
           view: view,
-          layerInfos: [
-            {
-              layer: facilityLayer,
-              addEnabled: true,
-              updateEnabled: true,
-              deleteEnabled: true
-            }
-          ],
-          allowedWorkflows: ["create", "update", "delete"]
+          layerInfos: [facilityInfos]
         });
 
         // Put it in an Expand widget (common pattern)
