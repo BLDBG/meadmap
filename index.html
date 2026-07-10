@@ -89,6 +89,11 @@
           container: null
         });
         
+        // Add the expand widget to the view instead of the search widget
+        view.ui.add(searchWidget, {
+          position: "bottom-right",
+        });
+                
         // Define the popup template for the mead producing facility layer
         const facilityPopupTemplate = {
           title: "{facility_name}",
@@ -170,9 +175,7 @@
 
         const editor = new Editor({
           view: view,
-          layerInfos: [facilityInfos],
-          attachmentsOnCreateEnabled: false,
-          attachmentsOnUpdateEnabled: false
+          layerInfos: [facilityInfos]
         });
 
         const editorExpand = new Expand({
@@ -183,10 +186,7 @@
 
         view.ui.add(editorExpand, "top-right");
 
-        // Add the expand widget to the view instead of the search widget
-        view.ui.add(searchWidget, {
-          position: "bottom-right",
-        });
+
 
 
 
