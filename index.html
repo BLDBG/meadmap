@@ -37,7 +37,20 @@
       .addRecordBtn:hover {
         background-color: #005a87;
       }
-    
+      /* I added a banner to the top of the map for style and informational purposes */
+      #Banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 8px 16px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      }
     
     
     </style>
@@ -127,6 +140,7 @@
         };
 
         // Define a customer renderer for the mead producing facility layer
+        // Looks like this section could be deleted altogether since you have the custom facility renderer below
         //const facilityRenderer = {
         //  type: "simple",
         //  symbol: {
@@ -196,9 +210,12 @@
 
   </head>
   <body>
+    <!-- I added a banner to the top of the map for style and informational purposes -->
+    <div id="Banner">
+      <strong>Mead Map</strong> — An application to explore and map mead distilleries.
+    </div>
 
-    <a href="https://survey123.arcgis.com/share/3b11ddf5a31d4bd08c2ef37fbf490815" target="_blank" class="addRecordBtn">Add Record</a>
     <div id="viewDiv"></div>
-
+    <a href="https://survey123.arcgis.com/share/3b11ddf5a31d4bd08c2ef37fbf490815" target="_blank" class="addRecordBtn">Add Record</a>
   </body>
 </html>
